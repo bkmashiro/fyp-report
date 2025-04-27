@@ -1,0 +1,222 @@
+google-arcore-doc:
+  title: "Google ARCore"
+  url: "https://developers.google.com/ar"
+  type: "Web"
+
+ar-kit:
+  title: "ARKit"
+  url: "https://developer.apple.com/augmented-reality/arkit/"
+  type: "Web"
+
+web-xr:
+  title: "WebXR"
+  url: "https://www.w3.org/TR/webxr/"
+  type: "Web"
+
+circom:
+  title: "Circom"
+  url: "https://github.com/iden3/circom"
+  type: "Web"
+
+google-cloud-anchor:
+  title: "Google Cloud Anchor"
+  url: "https://developers.google.com/ar/develop/cloud-anchors"
+  type: "Web"
+
+multipath-propagation:
+  title: "Multipath Propagation"
+  url: "https://en.wikipedia.org/wiki/Multipath_propagation"
+  type: "Web"
+
+p-hash:
+  title: "Perceptual hashing"
+  url: "https://en.wikipedia.org/wiki/Perceptual_hashing"
+  type: "Web"
+
+zero-knowledge-proofs:
+  title: "Zero-knowledge proofs"
+  url: "https://en.wikipedia.org/wiki/Zero-knowledge_proof"
+  type: "Web"
+
+nest-access-control:
+  title: "Nest-Access-Control"
+  url: "https://github.com/nestjs-community/access-control"
+  type: "Web"
+
+view-transitions-api:
+  title: "View Transitions API"
+  url: "https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API"
+  type: "Web"
+
+logcat:
+  title: "Logcat"
+  url: "https://developer.android.com/studio/debug/logcat"
+  type: "Web"
+
+ngrok:
+  title: "ngrok"
+  url: "https://ngrok.com/"
+  type: "Web"
+
+unity-doc:
+  title: "Unity Documentation"
+  url: "https://docs.unity3d.com/"
+  type: "Web"
+
+ar-foundation:
+  title: "AR Foundation"
+  url: "https://docs.unity3d.com/Manual/arfoundation.html"
+  type: "Web"
+
+c-sharp:
+  title: "C#"
+  url: "https://docs.microsoft.com/en-us/dotnet/csharp/"
+  type: "Web"
+
+nuxt-js:
+  title: "Nuxt.js"
+  url: "https://nuxt.com/"
+  type: "Web"
+
+typescript:
+  title: "TypeScript"
+  url: "https://www.typescriptlang.org/"
+  type: "Web"
+
+tailwind-css:
+  title: "Tailwind CSS"
+  url: "https://tailwindcss.com/"
+  type: "Web"
+
+vue-js:
+  title: "Vue.js"
+  url: "https://vuejs.org/"
+  type: "Web"
+
+vscode:
+  title: "VSCode"
+  url: "https://code.visualstudio.com/"
+  type: "Web"
+
+chrome-devtools:
+  title: "Chrome DevTools"
+  url: "https://developer.chrome.com/docs/devtools"
+  type: "Web"
+
+eslint:
+  title: "ESLint"
+  url: "https://eslint.org/"
+  type: "Web"
+
+prettier:
+  title: "Prettier"
+  url: "https://prettier.io/"
+  type: "Web"
+
+nest-js:
+  title: "NestJS"
+  url: "https://nestjs.com/"
+  type: "Web"
+
+postgresql:
+  title: "PostgreSQL"
+  url: "https://www.postgresql.org/"
+  type: "Web"
+
+redis:
+  title: "Redis"
+  url: "https://redis.io/"
+  type: "Web"
+
+postgis:
+  title: "PostGIS"
+  url: "https://postgis.net/"
+  type: "Web"
+
+cloudflare:
+  title: "Cloudflare"
+  url: "https://www.cloudflare.com/"
+  type: "Web"
+
+aws:
+  title: "AWS"
+  url: "https://aws.amazon.com/"
+  type: "Web"
+
+google-cloud:
+  title: "Google Cloud"
+  url: "https://cloud.google.com/"
+  type: "Web"
+
+hedera-hashgraph:
+  title: "Hedera Hashgraph"
+  url: "https://www.hedera.com/"
+  type: "Web"
+
+postman:
+  title: "Postman"
+  url: "https://www.postman.com/"
+  type: "Web"
+
+pgadmin:
+  title: "pgAdmin"
+  url: "https://www.pgadmin.org/"
+  type: "Web"
+
+git:
+  title: "Git"
+  url: "https://git-scm.com/"
+  type: "Web"
+
+github:
+  title: "GitHub"
+  url: "https://github.com/"
+  type: "Web"
+
+hey-api-openapi-ts:
+  title: "Hey API OpenAPI TS"
+  url: "https://github.com/hey-api/openapi-ts"
+  type: "Web"
+
+typeorm:
+  title: "TypeORM"
+  url: "https://typeorm.io/"
+  type: "Web"
+
+s3:
+  title: "AWS S3"
+  url: "https://aws.amazon.com/s3/"
+  type: "Web"
+
+vercel:
+  title: "Vercel"
+  url: "https://vercel.com/"
+  type: "Web"
+
+heroku:
+  title: "Heroku"
+  url: "https://www.heroku.com/"
+  type: "Web"
+
+gps-gov:
+  title: "GPS Accuracy"
+  url: "https://www.gps.gov/systems/gps/performance/accuracy/"
+  type: "Web"
+
+block-mean-value-based-image-perceptual-hashing:
+  title: "Block Mean Value Based Image Perceptual Hashing"
+  authors: ["B. Yang", "F. Gu", "X. Niu"]
+  year: 2006
+  conference: "International Conference on Intelligent Information Hiding and Multimedia"
+  location: "Pasadena, CA, USA"
+  pages: "167-172"
+  doi: "10.1109/IIH-MSP.2006.265125"
+  keywords: ["Signal processing algorithms", "Fourier transforms", "Cryptography", "Marine technology", "Noise robustness", "Fingerprint recognition", "Tiles", "Computational complexity", "Computer science", "Sea measurements"]
+  type: "Conference"
+
+ar-js:
+  title: "AR.js"
+  url: "https://ar-js-org.github.io/AR.js-Docs/"
+  type: "Web"
+
+
