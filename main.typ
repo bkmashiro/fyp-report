@@ -84,7 +84,29 @@
 ]
 
 #pagebreak()
+#heading(outlined: false, numbering: none, [Statement of Original Authorship])
 
+I hereby declare that this proposal, entitled _SnapSphere - Immersive photo experience - Final Year Project Report_, is the result of my own independent work, and all sources of information and assistance have been fully acknowledged. I confirm that, to the best of my knowledge, this work has not been previously submitted to any other academic institution for a degree or diploma, either in part or in whole.
+
+Any external contributions or collaborative input have been cited appropriately, and all necessary permissions for the use of copyrighted materials have been obtained.
+
+I understand the implications of academic integrity policies and am aware that any breach of these policies may result in academic penalties.
+
+#v(1cm)
+
+#table(columns: (auto, auto, auto, auto),
+stroke: white,
+inset: 0cm,
+
+  strong([Signature (Seal):]) + h(0.5cm),
+  repeat("."+hide("'")),
+  h(0.5cm) + strong([Date:]) + h(0.5cm),
+  // repeat("."+hide("'")),
+  datetime.today().display("[month repr:short].[day], [year]")
+)
+
+
+#pagebreak()
 = Introduction
 == Project Overview
 
@@ -1471,7 +1493,58 @@ template Ownership() {
 ==== Circuit Constraints
 - Input constraints: $"sigHash"$, $"artHash" in F_p$
 - Output constraints: $"commitment" = "Poseidon"("sigHash", "artHash")$
-- Witness#footnote([The witness is a set of values that satisfies the circuit constraints, including the internal variables and private inputs, only when a proper witness is provided, a proof can be generated]): private inputs, internal variables
+- Witness#footnote([The witness is a set of values that satisfies the circuit constraints. Only when a proper witness is provided, a proof can be generated]): private inputs, internal variables
+
+==== Comparison with RSA
+
+The zero-knowledge proof system and RSA (Rivest-Shamir-Adleman) are both cryptographic systems, but they serve different purposes and have distinct characteristics:
+
+#table(
+  columns: (auto, auto, auto),
+  align: (left, left, left),
+  [*Aspect*], [*Zero-Knowledge Proof*], [*RSA*],
+  [Purpose],
+  [Prove knowledge without revealing it],
+  [Encryption and digital signatures],
+
+  [Key Components],
+  [Prover, Verifier, Witness],
+  [Public key, Private key],
+
+  [Security Basis],
+  [Computational complexity of mathematical problems],
+  [Integer factorization problem],
+
+  [Privacy Level],
+  [Complete privacy (zero-knowledge)],
+  [Partial privacy (reveals some information)],
+
+  [Verification Process],
+  [Interactive or non-interactive proof verification],
+  [Direct signature verification],
+
+  [Use Case],
+  [Proving ownership without revealing content],
+  [Encrypting messages and signing documents],
+)
+
+Key differences in implementation:
+
++ *Privacy Level*
+  - ZKP: Proves knowledge without revealing any information
+  - RSA: Reveals some information during verification
+
++ *Verification Process*
+  - ZKP: Requires complex proof generation and verification
+  - RSA: Simple signature verification process
+
++ *Use Cases*
+  - ZKP: Ideal for privacy-preserving verification
+  - RSA: Better suited for traditional encryption and signing
+
++ *Implementation Complexity*
+  - ZKP: Requires specialized circuit design
+  - RSA: Standardized implementation available
 
 === System Architecture
 
@@ -2287,16 +2360,7 @@ The project has laid a solid foundation for future development and enhancement. 
 
 These future developments will further enhance the platform's capabilities and user experience, making it an even more powerful tool for digital content creation and sharing.
 #pagebreak()
-= Statement of Original Authorship
 
-I hereby declare that this project report is my own work and that, to the best of my knowledge and belief, it contains no material previously published or written by another person nor material which has been accepted for the award of any other degree or diploma at any educational institution, except where due acknowledgment is made in the text.
-
-The project, SnapSphere, represents my original work in the field of immersive photo experiences. All code, documentation, and research presented in this report have been developed by me during the course of my final year project at South East Technological University.
-
-All external sources and references used in the development of this project have been properly cited in the References section. The project builds upon existing technologies and frameworks, but the specific implementation, integration, and enhancements are my original contributions.
-
-
-#pagebreak()
 
 = Appendix
 == A Simple Example of Zero-Knowledge Proof
