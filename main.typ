@@ -2204,23 +2204,25 @@ A proof is created with details as below:
 
 Click "Download Proof" to download the proof as a JSON file.
 
-// #figure(caption: "Zero-Knowledge Proof Traditional Verification")[
-//   #image("images/web-app-demo/zk-trad-noown.png", width: 70%)
-// ]//TODO replace image
-
-
-
-// #figure(caption: "Zero-Knowledge Proof Broken Proof")[
-//   #image("images/web-app-demo/zk-broken-proof.png", width: 70%)
-// ]//TODO replace image
-
-#figure(caption: "Zero-Knowledge Proof No Owner Verification")[
-  #image("images/web-app-demo/zk-zk-noown.png", width: 70%)
+#figure(caption: "Zero-Knowledge Proof Blockchain Verification")[
+  #image("images/web-app-demo/zk-trad-noown.png", width: 70%)
 ]
 
-// #figure(caption: "Zero-Knowledge Proof Owner Verification")[
-//   #image("images/web-app-demo/zk-zk-own.png", width: 70%)
-// ] //TODO replace image
+#figure(caption: "Zero-Knowledge Proof Blockchain Verification with Owner Address")[
+  #image("images/web-app-demo/zk-b-own.png", width: 70%)
+]
+
+#figure(caption: "Zero-Knowledge Proof Broken Proof")[
+  #image("images/web-app-demo/zk-broken-proof.png", width: 70%)
+]
+
+#figure(caption: "Zero-Knowledge Proof without Owner Verification")[
+  #image("images/web-app-demo/zk-zk-noown-2.png", width: 70%)
+]
+
+#figure(caption: "Zero-Knowledge Proof with Owner Verification")[
+  #image("images/web-app-demo/zk-zk-own-2.png", width: 70%)
+]
 
 = Conclusion
 == Project Summary
