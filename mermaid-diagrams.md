@@ -98,211 +98,55 @@ sequenceDiagram
 
 ```mermaid
 graph LR
-  AppModule-->ConfigModule
-  ConfigModule-->ConfigHostModule
-  ConfigHostModule-->ConfigModule
-  ConfigHostModule-->CacheModule
-  CacheModule-->ConfigModule
-  CacheModule-->ConfigHostModule
-  CacheModule-->TypeOrmCoreModule
-  TypeOrmCoreModule-->ConfigModule
-  TypeOrmCoreModule-->ConfigHostModule
-  TypeOrmCoreModule-->CacheModule
-  TypeOrmCoreModule-->AccessControlModule
-  AccessControlModule-->ConfigModule
-  AccessControlModule-->ConfigHostModule
-  AccessControlModule-->CacheModule
-  AccessControlModule-->TypeOrmCoreModule
-  AccessControlModule-->AutoEntitiesModule
-  AutoEntitiesModule-->TypeOrmModule
-  TypeOrmModule-->ConfigModule
-  TypeOrmModule-->ConfigHostModule
-  TypeOrmModule-->CacheModule
-  TypeOrmModule-->TypeOrmCoreModule
-  TypeOrmModule-->AccessControlModule
-  TypeOrmModule-->AutoEntitiesModule
-  AutoEntitiesModule-->ConfigModule
-  AutoEntitiesModule-->ConfigHostModule
-  AutoEntitiesModule-->CacheModule
-  AutoEntitiesModule-->TypeOrmCoreModule
-  AutoEntitiesModule-->AccessControlModule
-  TypeOrmCoreModule-->AutoEntitiesModule
-  CacheModule-->AccessControlModule
-  CacheModule-->AutoEntitiesModule
-  ConfigHostModule-->TypeOrmCoreModule
-  ConfigHostModule-->AccessControlModule
-  ConfigHostModule-->AutoEntitiesModule
-  ConfigModule-->ConfigModule
-  ConfigModule-->CacheModule
-  ConfigModule-->TypeOrmCoreModule
-  ConfigModule-->AccessControlModule
-  ConfigModule-->AutoEntitiesModule
-  AppModule-->CacheModule
-  AppModule-->TypeOrmModule
   AppModule-->AccessControlModule
-  AppModule-->AutoEntitiesModule
   AppModule-->UserModule
-  UserModule-->TypeOrmModule
-  UserModule-->ConfigModule
-  UserModule-->ConfigHostModule
-  UserModule-->CacheModule
-  UserModule-->TypeOrmCoreModule
   UserModule-->AccessControlModule
-  UserModule-->AutoEntitiesModule
   AppModule-->AuthModule
   AuthModule-->UserModule
   AuthModule-->PassportModule
-  PassportModule-->ConfigModule
-  PassportModule-->ConfigHostModule
-  PassportModule-->CacheModule
-  PassportModule-->TypeOrmCoreModule
   PassportModule-->AccessControlModule
-  PassportModule-->AutoEntitiesModule
   AuthModule-->JwtModule
-  JwtModule-->ConfigModule
-  JwtModule-->ConfigHostModule
-  JwtModule-->CacheModule
-  JwtModule-->TypeOrmCoreModule
   JwtModule-->AccessControlModule
-  JwtModule-->AutoEntitiesModule
-  AuthModule-->ConfigModule
-  AuthModule-->ConfigHostModule
-  AuthModule-->CacheModule
-  AuthModule-->TypeOrmCoreModule
   AuthModule-->AccessControlModule
-  AuthModule-->AutoEntitiesModule
   AppModule-->RoleModule
-  RoleModule-->ConfigModule
-  RoleModule-->ConfigHostModule
-  RoleModule-->CacheModule
-  RoleModule-->TypeOrmCoreModule
   RoleModule-->AccessControlModule
-  RoleModule-->AutoEntitiesModule
   AppModule-->FasterCrudModule
-  FasterCrudModule-->ConfigModule
-  FasterCrudModule-->ConfigHostModule
-  FasterCrudModule-->CacheModule
-  FasterCrudModule-->TypeOrmCoreModule
   FasterCrudModule-->AccessControlModule
-  FasterCrudModule-->AutoEntitiesModule
   AppModule-->TestModule
-  TestModule-->ConfigModule
-  TestModule-->ConfigHostModule
-  TestModule-->CacheModule
-  TestModule-->TypeOrmCoreModule
   TestModule-->AccessControlModule
-  TestModule-->AutoEntitiesModule
   AppModule-->FileModule
-  FileModule-->TypeOrmModule
-  FileModule-->ConfigModule
-  FileModule-->ConfigHostModule
-  FileModule-->CacheModule
-  FileModule-->TypeOrmCoreModule
   FileModule-->AccessControlModule
-  FileModule-->AutoEntitiesModule
   AppModule-->ConsensusModule
-  ConsensusModule-->TypeOrmModule
   ConsensusModule-->MessageMetaModule
-  MessageMetaModule-->TypeOrmModule
-  MessageMetaModule-->ConfigModule
-  MessageMetaModule-->ConfigHostModule
-  MessageMetaModule-->CacheModule
-  MessageMetaModule-->TypeOrmCoreModule
   MessageMetaModule-->AccessControlModule
-  MessageMetaModule-->AutoEntitiesModule
   ConsensusModule-->GeoImageModule
   GeoImageModule-->FileModule
-  GeoImageModule-->TypeOrmModule
   GeoImageModule-->CloudAnchorModule
-  CloudAnchorModule-->TypeOrmModule
-  CloudAnchorModule-->ConfigModule
-  CloudAnchorModule-->ConfigHostModule
-  CloudAnchorModule-->CacheModule
-  CloudAnchorModule-->TypeOrmCoreModule
   CloudAnchorModule-->AccessControlModule
-  CloudAnchorModule-->AutoEntitiesModule
-  GeoImageModule-->ConfigModule
-  GeoImageModule-->ConfigHostModule
-  GeoImageModule-->CacheModule
-  GeoImageModule-->TypeOrmCoreModule
   GeoImageModule-->AccessControlModule
-  GeoImageModule-->AutoEntitiesModule
   ConsensusModule-->FileModule
-  ConsensusModule-->ConfigModule
-  ConsensusModule-->ConfigHostModule
-  ConsensusModule-->CacheModule
-  ConsensusModule-->TypeOrmCoreModule
   ConsensusModule-->AccessControlModule
-  ConsensusModule-->AutoEntitiesModule
   AppModule-->GeoObjectModule
-  GeoObjectModule-->TypeOrmModule
-  GeoObjectModule-->ConfigModule
-  GeoObjectModule-->ConfigHostModule
-  GeoObjectModule-->CacheModule
-  GeoObjectModule-->TypeOrmCoreModule
   GeoObjectModule-->AccessControlModule
-  GeoObjectModule-->AutoEntitiesModule
   AppModule-->GeoImageModule
   AppModule-->GeoCommentModule
-  GeoCommentModule-->TypeOrmModule
   GeoCommentModule-->CloudAnchorModule
-  GeoCommentModule-->ConfigModule
-  GeoCommentModule-->ConfigHostModule
-  GeoCommentModule-->CacheModule
-  GeoCommentModule-->TypeOrmCoreModule
   GeoCommentModule-->AccessControlModule
-  GeoCommentModule-->AutoEntitiesModule
   AppModule-->StoryboardModule
-  StoryboardModule-->ConfigModule
-  StoryboardModule-->ConfigHostModule
-  StoryboardModule-->CacheModule
-  StoryboardModule-->TypeOrmCoreModule
   StoryboardModule-->AccessControlModule
-  StoryboardModule-->AutoEntitiesModule
   AppModule-->SceneModule
-  SceneModule-->TypeOrmModule
   SceneModule-->LabelModule
-  LabelModule-->TypeOrmModule
-  LabelModule-->ConfigModule
-  LabelModule-->ConfigHostModule
-  LabelModule-->CacheModule
-  LabelModule-->TypeOrmCoreModule
   LabelModule-->AccessControlModule
-  LabelModule-->AutoEntitiesModule
-  SceneModule-->ConfigModule
-  SceneModule-->ConfigHostModule
-  SceneModule-->CacheModule
-  SceneModule-->TypeOrmCoreModule
   SceneModule-->AccessControlModule
-  SceneModule-->AutoEntitiesModule
   AppModule-->WatermarkModule
   WatermarkModule-->FileModule
-  WatermarkModule-->ConfigModule
-  WatermarkModule-->ConfigHostModule
-  WatermarkModule-->CacheModule
-  WatermarkModule-->TypeOrmCoreModule
   WatermarkModule-->AccessControlModule
-  WatermarkModule-->AutoEntitiesModule
   AppModule-->CloudAnchorModule
   AppModule-->LabelModule
   AppModule-->StatisticsModule
-  StatisticsModule-->TypeOrmModule
-  StatisticsModule-->ConfigModule
-  StatisticsModule-->ConfigHostModule
-  StatisticsModule-->CacheModule
-  StatisticsModule-->TypeOrmCoreModule
   StatisticsModule-->AccessControlModule
-  StatisticsModule-->AutoEntitiesModule
   AppModule-->ZkModule
-  ZkModule-->TypeOrmModule
   ZkModule-->ConsensusModule
-  ZkModule-->ConfigModule
-  ZkModule-->ConfigHostModule
-  ZkModule-->CacheModule
-  ZkModule-->TypeOrmCoreModule
   ZkModule-->AccessControlModule
-  ZkModule-->AutoEntitiesModule
-  AppModule-->ConfigHostModule
-  AppModule-->TypeOrmCoreModule
 ```
 

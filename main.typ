@@ -64,11 +64,12 @@
       - Demo App: #link("https://github.com/bkmashiro/fyp-next-unity")
       - Landing Page: #link("https://fl.yuzhes.com")
       - Production Demo: #link("https://fyp.yuzhes.com")
+      - Report: #link("https://github.com/bkmashiro/fyp-report")
     ]
   ]
 
   #v(4em)
-  TL;DR: //TODO+
+  TL;DR:
 
   The most interesting part:
   #block()[
@@ -370,6 +371,15 @@ Eventually, it's possible to use Cloud Anchor positioning in this project, expla
   - Provides tools for building apps for both iOS and Android
   - Handles complex graphics and physics calculations
 
+#figure(caption: "Unity Editor - App UI")[
+  #image("images/unity-editor/image-20250423203925840.png", width: 50%)
+]
+
+#figure(caption: "Unity Editor - Hierarchy")[
+  #image("images/unity-editor/image-20250423203939608.png", width: 50%)
+]
+
+
 - AR Foundation@ar-foundation
   - Unity's framework for building AR applications
   - Works with both ARCore (Android) and ARKit (iOS)
@@ -665,7 +675,9 @@ This approach provides several benefits:
 - StatisticsModule: Analytics, provides the functionality to collect and analyze system data
 - ZkModule: Zero-knowledge proofs, provides a interface of an external zero knowledge proof service
 
-#figure(caption: [System architecture#footnote("It's indeed a bit messy, check ")])[
+#figure(
+  caption: [System architecture#footnote([#link("https://github.com/bkmashiro/fyp-report/blob/main/images/diagrams/modules.svg")])],
+)[
   #image("images/diagrams/modules.png", width: 100%)
 ]
 
@@ -1003,11 +1015,12 @@ The following shows the base schema of the AR Object table:
   columns: (auto, auto, auto),
   align: (left, left, left),
   [*Field*], [*Type*], [*Description*],
+  [id], [uuid], [Object identifier],
   [type], [varchar], [Object type identifier],
   [anchor], [Point (geometry, SRID: 4326)], [Geographic anchor position],
   [anchor_latitude], [float (default: 0)], [Anchor latitude],
   [metadata], [text (nullable)], [Metadata information],
-  [cloudAnchor], [CloudAnchor (many-to-one, nullable)], [Cloud anchor association],
+  [cloudAnchor], [CloudAnchor (many-to-one)], [Cloud anchor association],
   [relPosition], [Point (geometry, SRID: 4326)], [Relative position],
   [relAltitude], [float (default: 0)], [Relative altitude],
   [relOrientation], [float[] (default: [0, 0, 0, 1])], [Relative orientation],
@@ -1073,27 +1086,27 @@ This feature-based approach offers several advantages:
 
 == Positioning
 
-The system's prior positioning method is *relative positioning*, which is a more accurate and reliable approach for indoor AR applications, when it's unavailable, the system will fall back to absolute positioning using Global Positioning System (GPS). 
+The system's prior positioning method is *relative positioning*, which is a more accurate and reliable approach for indoor AR applications, when it's unavailable, the system will fall back to absolute positioning using Global Positioning System (GPS).
 
 === Scene Graph
 
 In the application, virtual objects are organized in a *hierarchical structure* known as a *scene graph*. This tree-like organization provides several key benefits:
 
 + *Hierarchical Organization*
-   - Each object maintains its position relative to its parent
-   - Objects can be grouped together by making them children of a common parent
-   - When a parent moves, all its children maintain their relative positions
-   - Moving a group only cause one edit to the root element of the group
+  - Each object maintains its position relative to its parent
+  - Objects can be grouped together by making them children of a common parent
+  - When a parent moves, all its children maintain their relative positions
+  - Moving a group only cause one edit to the root element of the group
 
 + *Root Anchor Requirement*
-   - The root of the scene graph must be an Anchor
-   - This establishes the connection between virtual content and the real world
-   - It's children objects are positioned relative to this root anchor
+  - The root of the scene graph must be an Anchor
+  - This establishes the connection between virtual content and the real world
+  - It's children objects are positioned relative to this root anchor
 
 + *Grouping Benefits*
-   - Related objects can be moved together as a unit
-   - Complex arrangements can be created and manipulated easily
-   - Hierarchical organization simplifies scene management
+  - Related objects can be moved together as a unit
+  - Complex arrangements can be created and manipulated easily
+  - Hierarchical organization simplifies scene management
 
 === Relative Positioning
 
@@ -1458,7 +1471,7 @@ template Ownership() {
 ==== Circuit Constraints
 - Input constraints: $"sigHash"$, $"artHash" in F_p$
 - Output constraints: $"commitment" = "Poseidon"("sigHash", "artHash")$
-- Witness: $"sigHash"$, $"artHash"$
+- Witness#footnote([The witness is a set of values that satisfies the circuit constraints, including the internal variables and private inputs, only when a proper witness is provided, a proof can be generated]): private inputs, internal variables
 
 === System Architecture
 
@@ -1594,9 +1607,7 @@ template Ownership() {
 
 ==== Security Considerations
 - Prevent reuse of revoked tokens
-- Handle concurrent revocation requests
 - Maintain blacklist size through TTL
-- Monitor blacklist performance impact
 
 === Access Control with Nest-Access-Control
 
@@ -1684,17 +1695,7 @@ The system supports dynamic access control through:
 
 == Special Features
 === Interpage Animations
-The system implements smooth page transitions using the View Transitions API, a new web standard that enables seamless animations between page states.
-
-=== View Transitions API @view-transitions-api
-
-The View Transitions API provides a declarative way to create smooth transitions between different states of a web page:
-
-+ Key Features
-  - Automatic element tracking
-  - Smooth state transitions
-  - Hardware-accelerated animations
-  - Cross-browser compatibility
+The system implements smooth page transitions using the View Transitions API@view-transitions-api, a new web standard that enables seamless animations between page states.
 
 + Implementation
   ```css
@@ -1730,12 +1731,9 @@ The View Transitions API provides a declarative way to create smooth transitions
 
 + Benefits
   - Improved user experience
-  - Reduced development effort
   - Consistent animations
-  - Better performance
 
 = Unimplemented or Future Features
-== Scripting
 == Scripting
 
 The system was planned to support Lua scripting for dynamic behavior adjustment in Unity, but this feature was not implemented due to the following reasons:
@@ -1788,17 +1786,19 @@ The project's version control strategy was built around Git and GitHub, providin
 The development workflow emphasized quality and collaboration. Every code change required a pull request review, ensuring that multiple team members reviewed and approved changes. Automated testing and code quality checks were integrated into the workflow, while documentation updates were treated as an integral part of the development process.
 
 = Deployment
-== AR Application Deployment
+== Mobile Application Deployment
 
-The AR application deployment process was streamlined using Unity's comprehensive build system. Unity Cloud Build was utilized to automate the build process, generating platform-specific builds for both iOS and Android. This automation significantly reduced the time required for deployment while ensuring consistent build quality.
-
-Distribution was managed through official app stores and internal testing channels. The App Store Connect and Google Play Console were used for production releases, while internal testing channels facilitated beta testing and user feedback collection. This multi-channel approach allowed for controlled rollouts and gradual feature deployment.
+The mobile application deployment process was streamlined using Unity's comprehensive build system. Unity Cloud Build was utilized to automate the build process, generating platform-specific builds for both iOS#footnote("the iOS app is not available in AppStore due to Apple's policy") and Android. This automation significantly reduced the time required for deployment while ensuring consistent build quality.
 
 == Web Deployment
 
 The web application was deployed on Vercel, taking advantage of its modern deployment infrastructure. The platform's seamless GitHub integration enabled automatic deployments, with preview deployments for pull requests allowing for easy testing of new features. The edge network optimization provided by Vercel ensured fast content delivery worldwide.
 
 Performance optimization was a key focus of the web deployment strategy. Automatic HTTPS implementation and global CDN distribution helped maintain security and speed. Serverless functions were utilized for dynamic content, while integrated analytics provided valuable insights into user behavior and application performance.
+
+#figure(caption: "Web application deployment using Vercel")[
+  #image("images/cicd/vercel.png", width: 100%)
+]
 
 == Backend Deployment
 
@@ -1808,10 +1808,419 @@ The deployment pipeline was automated using GitHub Actions, ensuring consistent 
 
 Monitoring and observability were critical components of the backend deployment strategy. Application performance monitoring tools provided real-time insights into system health, while error tracking systems helped identify and resolve issues quickly. Log aggregation and resource utilization metrics enabled proactive system management and capacity planning.
 
+#figure(caption: "Backend deployment using Heroku")[
+  #image("images/cicd/heroku.png", width: 100%)
+]
+
+== Database
+
+The database was deployed on AWS RDS PostgreSQL, taking advantage of its modern deployment infrastructure. The platform provides a web interface for managing the database.
+
+#figure(caption: "Database deployment using AWS RDS")[
+  #image("images/cicd/aws.png", width: 100%)
+]
+
 = User Manual
-//TODO
 == Mobile App Usage
-== Admin Panel Guide
+
+=== Scanning and Hosting Cloud Anchors
+
+Cloud anchors serve as the foundation of the positioning system and are essential for initiating the application.
+
+==== Scanning a Cloud Anchor
+The scanning process automatically activates when a cloud anchor is detected nearby. As users navigate their surroundings, the application reconstructs a 3D map of the environment. Once sufficient environmental details are captured, the anchor is automatically resolved.
+
+==== Hosting a Cloud Anchor
+
+#figure(caption: "Host a cloud anchor")[
+  #image("images/unity-app/host-anchor.png", width: 40%)
+]
+
+To host a new cloud anchor, users should:
++ Select the "Anchor" tool
++ Tap on the screen to designate the desired anchor location
+
+A quality indicator will then appear, displaying color-coded bars:
+- Green: Optimal quality
+- Yellow: Acceptable quality
+- Red: Poor quality
+
+For successful hosting, users should:
++ Move around the target point in a 180-degree arc
++ Continue until the overall quality reaches an acceptable level
++ The anchor will be hosted automatically once quality requirements are met
+
+=== Viewing
+
+Once the anchor is resolved, the app will automatically load the scene related to the anchor.
+
+=== Create a 3D object
+
+To take a photo or leave a comment, users should:
++ Switch to the desired mode using the mode selector:
+  - Camera mode: For capturing photos
+  - Comment mode: For leaving text comments
+
+
+In camera mode:
++ Tap the center of the screen to capture a photo
++ The photo will appear as a 3D object in the scene
+
+In comment mode:
++ Tap the center of the screen to open the keyboard
++ Type your comment
++ Tap the arrow button to send
++ The comment will appear as a 3D text object in the scene
+
+#figure(caption: "Taking a photo and leaving a comment")[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    stack(
+      image("images/unity-app/spatial-image.png", width: 100%),
+      "",
+      align(center)[Camera Mode],
+    ),
+    stack(
+      image("images/unity-app/spatial-comment.png", width: 100%),
+      "",
+      align(center)[Comment Mode],
+    ),
+  )
+]
+
+
+=== Edit a 3D object
+
+To edit a 3D object, users should:
++ Select the object by tapping on it
++ Choose the desired operation mode from the side panel:
+  - Translation: Move the object in 3D space
+  - Rotation: Rotate the object around its axes
+  - Scale: Resize the object proportionally
+
+
+#figure(caption: "Edit a 3D object")[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    stack(
+      image("images/unity-app/edit-position.png", width: 100%),
+
+      "",
+      align(center)[Translate],
+    ),
+    stack(
+      image("images/unity-app/edit-rotation.png", width: 100%),
+      "",
+      align(center)[Rotate],
+    ),
+  )
+]
+
+The selected object will be highlighted, and users can:
++ Drag to move/rotate/scale the object
++ Drag the arcball to rotate the object
++ Drag the scale handle to resize the object
+
+== User Panel Guide
+=== Login/Register
+#figure(caption: "Login/Register interface")[
+  #image("images/web-app-demo/register.png", width: 50%)
+  #image("images/web-app-demo/login.png", width: 50%)
+]
+
+Users can register or login to the system using their username and password. The registration process requires:
++ A unique username
++ A secure password
+
+=== User Profile
+#figure(caption: "User profile")[
+  #image("images/web-app-demo/user-profile.png", width: 70%)
+]
+
+Users can view their profile information, including:
++ Username
++ Email
++ Profile picture
++ Scenes (created and managed by the user)
+
+=== Scene Management
+
+#figure(caption: "Scene Management Interface")[
+  #image("images/web-app-demo/scene-management.png", width: 70%)
+]
+
+The scene management interface provides users with comprehensive control over their virtual scenes. Key features include:
+
++ Scene Creation: Users can create new scenes with customizable names and descriptions
++ Scene Editing: Existing scenes can be modified to update their properties
++ Scene Deletion: Unwanted scenes can be removed from the system
++ Label Management: Each scene supports multiple descriptive labels for better organization
+
+A global map view is integrated below the scene list, displaying the geographic distribution of all scenes across the platform.
+
+#figure(caption: "Scene Details View")[
+  #image("images/web-app-demo/scene-detail.png", width: 70%)
+]
+
+The scene detail view offers an in-depth look at each scene's properties and contents:
+
++ Basic Information: Scene name and detailed description
++ Geographic Data: Location-specific details and coordinates
++ Label Management: Interactive panel for viewing and modifying scene labels
++ Spatial Visualization: An integrated map view displaying all geo-referenced objects within the scene
+
+This comprehensive interface enables users to effectively manage and interact with their virtual scenes while maintaining spatial context through the integrated mapping system.
+
+=== Cloud Anchor Management
+
+#figure(caption: "Cloud Anchor Management Interface")[
+  #image("images/web-app-demo/cloud-anchor-management.png", width: 70%)
+]
+
+The cloud anchor management interface allows users to:
++ View all available cloud anchors in the system in map view
++ View the details of a specific cloud anchor
++ Delete a cloud anchor
++ View paginated list of cloud anchors
+
+
+#figure(caption: "Cloud Anchor Details View")[
+  #image("images/web-app-demo/cloud-anchor-detail.png", width: 70%)
+]
+
+The cloud anchor details view provides comprehensive information about a specific cloud anchor:
+
++ Basic Information: Anchor name and description
++ Geographic Data: Location-specific details and coordinates
++ Object Associated: List of objects associated with the anchor, including a link to the object details
+
+=== Photo Management
+
+#figure(caption: "Photo Management Interface")[
+  #image("images/web-app-demo/album.png", width: 70%)
+]
+
+The photo management interface allows users to:
++ View the details of a specific photo
++ Delete a photo
++ View paginated list of photos
+
+
+#figure(caption: "Photo Details View")[
+  #image("images/web-app-demo/image-detail.png", width: 45%)
+]
+
+The photo details view provides comprehensive information about a specific photo:
+
++ Basic Information: Photo name and description
++ Geographic Data: Location-specific details and coordinates
++ Parent Scene: Link to the parent scene
++ Creation Date: Date and time of photo creation
++ Copyright Information: Copyright information/blockchain information of the photo
+
+In the Copyright Information section, users can download the blind-watermarked photo, which can be verified in the @verify-image-copyright.
+
+=== Comment Management
+
+#figure(caption: "Comment Management Interface")[
+  #image("images/web-app-demo/comment-management.png", width: 110%)
+]
+
+The comment management interface allows users to:
++ View all comments in the system in map view
++ View the details of a specific comment
++ Delete a comment
++ View paginated list of comments
+
+
+#figure(caption: "Comment Details View")[
+  #image("images/web-app-demo/comment-detail.png", width: 45%)
+]
+
+The comment details view provides comprehensive information about a specific comment:
+
++ Basic Information: Comment name and description
++ Geographic Data: Location-specific details and coordinates
++ Creation Date: Date and time of comment creation
+
+=== Label Management
+
+#figure(caption: "Label Management Interface")[
+  #image("images/web-app-demo/label-management.png", width: 70%)
+]
+
+The label management interface allows users to:
++ View the details of a specific label
++ View all scenes associated with a label
++ Search for a label
++ Add / Edit / Delete a label
+
+#figure(caption: "Add / Edit form")[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    stack(
+      image("images/web-app-demo/create-label.png", width: 100%),
+      "",
+      align(center)[Create],
+    ),
+    stack(
+      image("images/web-app-demo/edit-label.png", width: 100%),
+      "",
+      align(center)[Edit],
+    ),
+  )
+]
+
+=== Verify Image Copyright <verify-image-copyright>
+
+#figure(caption: "Verify Image Copyright Interface")[
+  #image("images/web-app-demo/verify-image-copyright.png", width: 100%)
+]
+
+The verify image copyright page provides two main functionalities for image verification and copyright protection:
+
+
+#figure(caption: "Upload Image")[
+  #image("images/web-app-demo/verify-image-copyright-2.png", width: 60%)
+]
+
+1. *Image Copyright Verification*
+  - Upload an image and enter a user ID
+  - System performs perceptual hashing to match against database
+  - Searches for similar images and corresponding geoImages
+  - Verifies if the image was created by the specified user
+  - Returns both potential and exact matches
+
+2. *Watermark Extraction*
+  - Extracts embedded copyright information from the image
+  - Searches database cache and blockchain for matching records
+  - Note: Process may fail if image has been significantly altered
+
+The system implements one-way verification for privacy protection:
+- Can verify if an image belongs to a specific user ID
+- Cannot query author information by image
+- Blockchain data remains hashed and secure
+
+#figure(caption: "Verify Image Copyright Successful Results")[
+  #grid(
+    columns: (2fr, 2fr),
+    gutter: 1em,
+  )[
+    #image("images/web-app-demo/verify-image-copyright-result.png", width: 100%)
+  ][
+    #image("images/web-app-demo/verify-image-copyright-sus.png", width: 100%)
+  ][
+    Exact match
+  ][
+    Suspicious
+  ]
+]
+
+#figure(caption: "Verify Image Copyright Failed Results")[
+  #image("images/web-app-demo/verify-image-copyright-wrong.png", width: 50%)
+]
+
+#figure(caption: "Verify Image Copyright Blind Watermark")[
+  #grid(
+    columns: (2fr, 2fr),
+    gutter: 1em,
+  )[
+    #align(horizon)[
+      #image("images/web-app-demo/verify-image-copyright-broken-wm.png", width: 100%)
+    ]
+  ][
+    #align(center)[
+      #image("images/web-app-demo/verify-image-copyright-wm.png", width: 100%)
+    ]
+  ][
+    Broken Watermark
+  ][
+    Extracted and Found
+  ]
+]
+
+=== Zero-Knowledge Proof
+
+The zero-knowledge copyright verification system enables users to create and verify copyright proofs in a privacy-preserving manner. The process involves several key components:
+
+1. *Proof Generation*
+  - User generates key pair locally (never leaves device)
+  - Creates commitment from artwork hash and signature
+  - Generates zero-knowledge proof using Groth16
+  - Optionally stores proof and commitment on blockchain
+
+2. *Verification Modes*
+  - Blockchain-based verification:
+    - Verifier computes artwork hash
+    - Searches blockchain for matching commitment
+    - Verifies zero-knowledge proof
+    - Optionally checks owner address
+
+  - Direct commitment verification:
+    - Verifier provides commitment value
+    - System verifies zero-knowledge proof
+    - Optionally checks owner address
+
+3. *Privacy Features*
+  - Owner address verification is optional
+  - Original artwork content remains private
+  - Only commitment values are stored on-chain
+  - Proof verification reveals no additional information
+
+This implementation ensures that copyright verification can be performed without compromising the privacy of the artwork owner or revealing sensitive information about the artwork itself.
+
+
+#figure(caption: "Zero-Knowledge Proof Key Pair")[
+  #image("images/web-app-demo/zk-key-pair.png", width: 70%)
+]
+
+Click "Generate New Key Pair" to generate a new key pair.
+
+Or click "Import Key Pair" to import an existing key pair#footnote([This allows users to generate a key pair offline by themselves.]).
+
+Click "Download JSON" to download the key pair as a JSON file.
+
+Click on Address / Public Key to copy the address / public key to the clipboard#footnote([It's recommended to not to share public key and address to anyone unless you intend to reveal your identity.]).
+
+#figure(caption: "Zero-Knowledge Proof Interface")[
+  #image("images/web-app-demo/zk-ui.png", width: 70%)
+]
+
+Click "Select Artwork File" to upload an artwork file.
+
+#figure(caption: "Zero-Knowledge Proof Created")[
+  #image("images/web-app-demo/zk-created-proof.png", width: 70%)
+]
+
+A proof is created with details as below:
+
+- Owner Address: The address of the owner of the artwork
+- Public Signal: The first public signal of the artwork
+- Protocol: The protocol used to create the proof
+- Curve: The curve used to create the proof
+
+Click "Download Proof" to download the proof as a JSON file.
+
+// #figure(caption: "Zero-Knowledge Proof Traditional Verification")[
+//   #image("images/web-app-demo/zk-trad-noown.png", width: 70%)
+// ]//TODO replace image
+
+
+
+// #figure(caption: "Zero-Knowledge Proof Broken Proof")[
+//   #image("images/web-app-demo/zk-broken-proof.png", width: 70%)
+// ]//TODO replace image
+
+#figure(caption: "Zero-Knowledge Proof No Owner Verification")[
+  #image("images/web-app-demo/zk-zk-noown.png", width: 70%)
+]
+
+// #figure(caption: "Zero-Knowledge Proof Owner Verification")[
+//   #image("images/web-app-demo/zk-zk-own.png", width: 70%)
+// ] //TODO replace image
 
 = Conclusion
 == Project Summary
