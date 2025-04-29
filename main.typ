@@ -94,12 +94,13 @@ I understand the implications of academic integrity policies and am aware that a
 
 #v(1cm)
 
-#table(columns: (auto, auto, auto, auto),
-stroke: white,
-inset: 0cm,
+#table(
+  columns: (auto, auto, auto, auto),
+  stroke: white,
+  inset: 0cm,
 
   strong([Signature (Seal):]) + h(0.5cm),
-  repeat("."+hide("'")),
+  repeat("." + hide("'")),
   h(0.5cm) + strong([Date:]) + h(0.5cm),
   // repeat("."+hide("'")),
   datetime.today().display("[month repr:short].[day], [year]")
@@ -121,267 +122,13 @@ The system provides users with an immersive augmented reality experience, allowi
 The project implements a comprehensive security framework that combines machine learning, blockchain, invisible watermarking, and zero-knowledge proofs to create a robust system for data security and privacy protection. This multi-layered approach ensures tamper-proof ownership records, efficient copyright protection, and privacy-preserving verification while maintaining user data confidentiality.
 
 
-
-== Motivation and Background
-
-The motivation behind this project stems from three key observations about the current state of digital media and social interaction:
-
-+ Digital Media Evolution
-  - Traditional photo sharing platforms lack spatial context and interactive experiences
-  - Users desire more immersive ways to experience digital content
-  - AR technology enables new forms of visual storytelling
-
-+ Content Protection Needs
-  - Growing concerns about digital content ownership
-  - Increasing cases of unauthorized content usage
-  - Need for robust copyright protection mechanisms
-
-+ Social Interaction Enhancement
-  - Limited ways to share experiences in digital spaces
-  - Desire for more meaningful social connections
-  - Potential of AR to create shared virtual spaces
-
-The project addresses these challenges by combining several innovative technologies:
-
-+ Augmented Reality Integration
-  - Enables spatial photo viewing
-  - Creates immersive social experiences
-  - Bridges physical and digital worlds
-
-+ Blockchain-based Protection
-  - Ensures content ownership
-  - Provides tamper-proof records
-  - Enables trustless verification
-
-+ Advanced Security Features
-  - Invisible watermarking for content tracking
-  - Zero-knowledge proofs for privacy
-  - Perceptual hashing for content identification
-
-This combination of technologies creates a unique platform that:
-- Preserves the spatial context of photos
-- Protects creators' rights
-- Fosters meaningful social interactions
-- Maintains user privacy and security
-
-The project's background is rooted in the convergence of several technological trends:
-- The rise of AR/VR technologies
-- Growing adoption of blockchain solutions
-- Increasing focus on digital privacy
-- Evolution of social media platforms
-
-These factors create an ideal environment for developing a platform that reimagines how we share, protect, and experience digital content in an increasingly connected world.
-
-== Objectives and Scope
-
-The project aims to create an innovative platform that combines AR technology, blockchain, and social features to revolutionize how we experience and share digital content. The objectives are organized around three main user groups:
-
-=== General Users
-
-*Immersive Experience*
-- Explore photos in AR/MR with spatial context
-- View content from original capture perspectives
-- Interact through spatial comments and replies
-
-#figure(caption: [Conceptual diagram of AR/MR experience@google-arcore-doc])[
-  #image("images/arcore/arcore_geospatial_overview.mp4_20241127_212923.146.png", width: 70%)
-  #image("images/arcore/arcore_geospatial_creator.mp4_20241127_212905.124.png", width: 70%)
-  #image("images/arcore/LaSagrada.png", width: 70%)
+#align(bottom)[
+  #align(center)[
+    #text(gray, size: 9pt)[
+      _Note that the content covered in the Proposal has been moved to @sem1-proposal _ 
+    ]
+  ]
 ]
-
-
-*Privacy and Discovery*
-- On-device processing of private data
-- Flexible privacy controls for data protection
-
-=== Content Creators
-
-*Creative Tools*
-- Create interactive AR stories with photos and media
-- Showcase artwork in immersive environments
-- Build time-based narratives and sequences
-
-#figure(caption: [Conceptual diagram of content creator@google-arcore-doc])[
-  #image("images/arcore/arcore_geospatial_creator.mp4_20241127_212814.871.png", width: 70%)
-]
-
-*Content Protection*
-- Secure copyright management through blockchain
-- Decentralized ownership verification
-- Tamper-proof content records
-
-=== Technical Scope
-
-*Core Features*
-- AR/MR content viewing and interaction
-- Blockchain-based ownership management
-- Privacy-preserving technology
-- Real-time social features
-
-*Technical Limitations*
-- Device compatibility requirements
-- Privacy implementation complexity
-- External service dependencies
-- Limited offline functionality
-
-= Feasibility Study
-
-The feasibility study for SnapSphere was conducted to evaluate the project's viability across three key dimensions: market potential, technical requirements, and operational sustainability.
-
-Market analysis revealed a growing demand for immersive AR experiences and interactive social media platforms, particularly among younger demographics. The project's unique combination of AR technology, blockchain-based content protection, and social features positions it well in the market. User research indicated strong interest in novel ways to experience and share content, with particular emphasis on privacy and content ownership.
-
-From a technical perspective, the project leverages well-established technologies including AR Foundation, blockchain, and zero-knowledge proofs. The core technologies have been proven in production environments, and the development team possesses the necessary expertise in these areas. Key technical challenges such as device sensor calibration, privacy-preserving architecture, and cross-platform compatibility were identified and addressed through careful planning and implementation.
-
-Operational viability was assessed through a comprehensive evaluation of user experience, technical infrastructure, and resource requirements. The study confirmed that the project can be implemented with existing resources while maintaining high standards of performance and reliability. The combination of cloud services, modern development tools, and robust security measures ensures a sustainable operational model.
-
-The study concluded that SnapSphere is technically feasible and commercially viable, with a clear path to implementation and a strong value proposition for users. The project's innovative approach to digital content sharing and protection addresses current market needs while leveraging proven technologies and best practices.
-
-= Requirements Analysis
-
-== Functional Requirements
-
-=== User Authentication
-- JWT-based authentication system
-- Role-based access control
-- Token revocation mechanism
-- Secure key management
-
-=== Content Creation
-- Cloud anchor management
-- Spatial positioning system
-- Scene-based organization
-
-=== Web Content Management
-- Scene and content administration
-- User management interface
-- Content moderation tools
-- Analytics dashboard
-
-=== Backend Review and Analytics
-- Content verification system
-- Usage statistics tracking
-- Performance monitoring
-- Security audit logging
-
-== Non-Functional Requirements
-
-=== Response Time
-- Real-time AR content loading
-- Fast image similarity search
-- Efficient blockchain transactions
-- Low-latency social interactions
-
-=== Data Consistency
-- Blockchain-based ownership records
-- Synchronized AR content
-- Reliable data backup
-
-=== Privacy Protection
-- Zero-knowledge proof implementation
-- Invisible watermarking
-- Privacy-preserving content discovery
-- Secure data storage
-
-=== Security Requirements
-- Tamper-proof content protection
-- Secure key management
-- Access control enforcement
-- Vulnerability prevention
-
-=== Scalability Requirements
-- Distributed content delivery
-- Load balancing
-- Resource optimization
-- Performance monitoring
-
-=== Usability Requirements
-- Intuitive AR interactions
-- Clear content organization
-- Responsive web interface
-- Cross-platform compatibility
-
-= Risk Management
-
-== Technical Challenges
-
-=== AR Framework Selection
-*Initial Challenges*
-- Limited open-source AR solutions
-- The8thwall's closed-source nature
-- AR.js implementation difficulties
-- Cross-platform compatibility issues
-
-*Solution*
-- Selected Unity + AR Foundation after evaluating WebXR and The8thwall
-- Leveraged Unity's robust AR development tools
-- Utilized AR Foundation's cross-platform capabilities
-- AR Foundation is a cross-platform framework by nature
-
-#figure(caption: [Maker based positioning in AR.js])[
-  #image("images/legacy/image_positioning.png", width: 50%)
-]
-
-Marker Tracking displays content when a marker is detected by the camera. While stable, markers are limited in shape, color and size. Common applications include augmented books, flyers and advertising.@ar-js
-
-Marker Tracking is attempted to be used in the project, but it's requiring a pre-defined marker image, which is not suitable for the project.
-
-Location Based AR uses real-world coordinates to display AR content on user devices. Users can move around outdoors and see AR content anchored to real locations, with content scaling based on distance. Applications include tourist guides, city exploration, point-of-interest discovery, and educational experiences like treasure hunts and situated art. @ar-js
-
-Location Based AR is not applicable to the project, due to the low accuracy of the location.
-
-Eventually, it's possible to use Cloud Anchor positioning in this project, explained in @cloud-anchor.
-
-=== Algorithm Implementation
-*Complex Requirements*
-- Zero-knowledge proof integration
-- External software dependencies
-  - The watermarking module depends on a python executable.
-- Mathematical complexity
-  - In the mobile app development, complex 3D environment interactions require extensive knowledge of linear algebra and computer graphics
-- Performance optimization
-  - The watermarking module is a performance bottleneck
-*Solution*
-- Modular design approach
-- Python-based watermarking
-- Optimized proof generation
-- Efficient verification process
-
-=== Development and Debugging
-*Development Challenges*
-- Long Unity compilation times (\~3 minutes)
-  - Unity build is full package compilation by default
-- Limited debugging capabilities
-  - Hard to debug across devices
-- Mobile deployment complexity
-- Performance monitoring
-- Requirement of Secure contexts
-  - Some AR features in Browser are not available in non-secure contexts (non-HTTPS)
-
-*Solution*
-- Optimized build process (Incremental Build)
-- Enhanced logging system (Logcat@logcat)
-- Performance profiling#footnote([It turns out that the performance is good enough, so I didn't do anything about it.])
-- Use HTTPS proxy, e.g. `ngrok`@ngrok
-
-== Risk Mitigation Strategies
-
-=== Technical Risk Management
-- Regular technology evaluation
-- Backup solution planning
-- Performance optimization
-- Cross-platform testing
-
-=== Development Process
-- Modular architecture
-- Continuous integration
-- Automated testing
-- Performance monitoring
-
-=== Quality Assurance
-- Comprehensive testing
-- User feedback collection
-- Performance benchmarking
-- Security auditing
 
 = Technology Stack and Tools
 
@@ -398,9 +145,10 @@ Eventually, it's possible to use Cloud Anchor positioning in this project, expla
 ]
 
 #figure(caption: "Unity Editor - Hierarchy")[
-  #image("images/unity-editor/image-20250423203939608.png", width: 50%)
+  #image("images/unity-editor/image-20250423203939608.png", width: 40%)
 ]
 
+#pagebreak()
 
 - AR Foundation@ar-foundation
   - Unity's framework for building AR applications
@@ -453,6 +201,8 @@ Eventually, it's possible to use Cloud Anchor positioning in this project, expla
   - A framework for building modern web applications
   - Makes Vue.js development easier
   - Handles routing and server-side rendering
+
+#pagebreak()
 
 - TypeScript@typescript
   - Adds type checking to JavaScript, better safety
@@ -615,6 +365,8 @@ Eventually, it's possible to use Cloud Anchor positioning in this project, expla
   - Helps make improvements
   - Guides development
 
+#pagebreak()
+
 - Security auditing
   - Checks for security problems
   - Helps keep data safe
@@ -649,6 +401,8 @@ This approach provides several benefits:
 - Reduces manual coding errors
 - Improves development efficiency
 - Enables better IDE support (type safety)
+
+#pagebreak()
 
 
 = System Design
@@ -692,6 +446,8 @@ This approach provides several benefits:
 - ConsensusModule: Distributed consensus, provides the basic functionality of Hedera Hashgraph Blockchain manipulations
 - ImageCopyrightModule: Copyright management, based on the consensus module, provides the functionality to create or query image copyright information
 
+#pagebreak()
+
 === Utility Modules
 - FileModule: File management, a adapter-pattern-designed module that provides a unified interface for file operations, currently supports local file system and AWS S3
 - StatisticsModule: Analytics, provides the functionality to collect and analyze system data
@@ -710,6 +466,8 @@ This approach provides several benefits:
 #figure(caption: "Database schema")[
   #image("images/db/schema.png", width: 90%)
 ]
+
+#pagebreak()
 
 === Core Tables
 
@@ -943,6 +701,8 @@ CREATE INDEX IF NOT EXISTS "IDX_b78bf773912eb343d75fbed6c0"
     ON public.scene_labels_label("sceneId");
 ```
 
+#pagebreak()
+
 === Database Features
 - PostGIS for geospatial data
 - Spatial indexing
@@ -1088,7 +848,7 @@ The process works by:
 + Allowing other devices to *match* these features to locate the same position
 
 #figure(caption: "A device hosting an anchor")[
-  #image("images/diagrams/cloudanchor-seq.svg", width: 70%)
+  #image("images/diagrams/cloudanchor-seq.svg", width: 100%)
 ]
 
 
@@ -1129,6 +889,8 @@ In the application, virtual objects are organized in a *hierarchical structure* 
   - Related objects can be moved together as a unit
   - Complex arrangements can be created and manipulated easily
   - Hierarchical organization simplifies scene management
+
+#pagebreak()
 
 === Relative Positioning
 
@@ -1286,6 +1048,8 @@ The embedding process takes an input image and watermark information (which can 
   )
 ]
 
+#pagebreak()
+
 === Extraction Process
 
 The extraction process can recover the watermark without requiring the original image:
@@ -1352,6 +1116,8 @@ The blockchain-based copyright protection system combines perceptual hashing wit
 
 The system provides several key benefits:
 
+#pagebreak()
+
 + Privacy Protection
   - Original image not stored on chain
   - Cannot directly infer the author's identity from the blockchain records
@@ -1380,10 +1146,6 @@ If the image is *embedded* with the *identifier* (mentioned in @on-chain-evidenc
 Mentioned in the @invisible-watermarking section#footnote([This is combining the @invisible-watermarking and the primitive way of @blockchain-based-copyright-protection.]), the embedding identifier can be extracted from the image, even if the image is edited slightly (including compression, rotation, cropping, etc.).
 
 Then the system will query the blockchain to find and verify the ownership record of the image.
-
-
-
-
 
 == Image Similarity Search <image-similarity-search>
 === Perceptual Hashing
@@ -1447,11 +1209,17 @@ A 92% threshold is used to determine if a photo is a duplicate#footnote("There a
 
 === Introduction to Zero-Knowledge Proofs
 
-Zero-knowledge proofs (ZKPs)#footnote([A analogy story is shown in @magic-cave to illustrate the concept of ZKPs]) are cryptographic protocols that allow one party (the prover) to prove to another party (the verifier) that a statement is true without revealing any additional information#footnote([That is to say, in the scenario of photo ownership, the prover can prove to the verifier that they own a photo, *without revealing the photo content and the owner's identity*, but in the system, it's simplified, that the owner's address is revealed (actively informed to the verifier). In theory this can be improved using randomized `artistId`]).
+Zero-knowledge proofs (ZKPs)#footnote([A analogy story is shown in @magic-cave to illustrate the concept of ZKPs]) are cryptographic protocols that allow one party (the prover) to prove to another party (the verifier) that a statement is true without revealing any additional information#footnote([That is to say, in the scenario of photo ownership, the prover can prove to the verifier that they own a photo, *without revealing the photo content or the owner's identity*, but in the system, it's simplified, that the owner's address is revealed (actively informed to the verifier). In theory this can be improved using randomized `artistId`]). In the mean time, the verifier, even after having become convinced of the statement's truth, should nonetheless remain unable to prove the statement to further third parties.
 
 For example:
 - Traditional way: To prove you own a photo, you need to show the photo
-- Zero-knowledge way: You only need to provide a proof that verifies your ownership, without revealing the photo content and the owner's identity
+  - Or using RSA for example, the photo is signed with the owner's private key, so the verifier can verify the ownership by using the owner's public key. But here the photo is revealed, and the owner's identity is exposed.
+- Zero-knowledge way: You only need to provide a proof that verifies your ownership, without revealing the photo content and the owner's identity. The verifier is convinced, but cannot prove the statement to further third parties.
+
+Summary:
+- Prover does not reveal any information
+- Verifier is convinced of the statement's truth
+- Verifier cannot prove the statement to further third parties
 
 === Mathematical Foundations
 
@@ -1465,6 +1233,8 @@ For example:
 - Input: two elements $(x, y) in F_p^2$
 - Output: one element $h in F_p$
 - Mathematical representation: $h = "Poseidon"(x, y)$
+
+#pagebreak()
 
 ==== Groth16 Proof System
 - Zero-knowledge proof system based on R1CS (Rank-1 Constraint System)
@@ -1503,29 +1273,12 @@ The zero-knowledge proof system and RSA (Rivest-Shamir-Adleman) are both cryptog
   columns: (auto, auto, auto),
   align: (left, left, left),
   [*Aspect*], [*Zero-Knowledge Proof*], [*RSA*],
-  [Purpose],
-  [Prove knowledge without revealing it],
-  [Encryption and digital signatures],
-
-  [Key Components],
-  [Prover, Verifier, Witness],
-  [Public key, Private key],
-
-  [Security Basis],
-  [Computational complexity of mathematical problems],
-  [Integer factorization problem],
-
-  [Privacy Level],
-  [Complete privacy (zero-knowledge)],
-  [Partial privacy (reveals some information)],
-
-  [Verification Process],
-  [Interactive or non-interactive proof verification],
-  [Direct signature verification],
-
-  [Use Case],
-  [Proving ownership without revealing content],
-  [Encrypting messages and signing documents],
+  [Purpose], [Prove knowledge without revealing it], [Encryption and digital signatures],
+  [Key Components], [Prover, Verifier, Witness], [Public key, Private key],
+  [Security Basis], [Computational complexity of mathematical problems], [Integer factorization problem],
+  [Privacy Level], [Complete privacy (zero-knowledge)], [Partial privacy (reveals some information)],
+  [Verification Process], [Interactive or non-interactive proof verification], [Direct signature verification],
+  [Use Case], [Proving ownership without revealing content], [Encrypting messages and signing documents],
 )
 
 Key differences in implementation:
@@ -1545,6 +1298,31 @@ Key differences in implementation:
 + *Implementation Complexity*
   - ZKP: Requires specialized circuit design
   - RSA: Standardized implementation available
+
+==== Note
+
+In the context of "Copyright Protection", it makes little sense to use ZKP to prove only the ownership of the artwork, without revealing the artwork content / owner's identity.
+
+The idea here is to reveal little information (user's indenty hash or artwork signature) to the verifier, while ZK protects the full artwork content from being revealed.
+
+===== Comparison with hash Only
+
+Current Web3 platforms typically use direct hashing: storing artwork hash on-chain. This approach has privacy risks:
+- Hash collisions (theoretical)
+- Brute force attacks on small files
+- Reverse matching for popular content
+
+ZK-enhanced registration improves privacy by:
+- Storing only hash and ZK proof on-chain
+- Proving knowledge without revealing content
+- Preventing content speculation
+- Blocking reverse matching attempts
+- Securing small/popular works
+
+In short:
+
+- Hash only: the third party cannot know the content, temporarily
+- ZK-enhanced: without actively revealing the content, the third party cannot know anything about the content
 
 === System Architecture
 
@@ -1614,6 +1392,8 @@ Key differences in implementation:
 - Query performance optimized with indexes
 - Support for time-range queries
 - Caching of common query results
+
+#pagebreak()
 
 == Web Management Interface
 === Frontend Architecture
@@ -1766,6 +1546,8 @@ The system supports dynamic access control through:
   - Extended validation rules
   - Flexible permission models
 
+#pagebreak()
+
 == Special Features
 === Interpage Animations
 The system implements smooth page transitions using the View Transitions API@view-transitions-api, a new web standard that enables seamless animations between page states.
@@ -1806,6 +1588,8 @@ The system implements smooth page transitions using the View Transitions API@vie
   - Improved user experience
   - Consistent animations
 
+#pagebreak()
+
 = Unimplemented or Future Features
 == Scripting
 
@@ -1843,6 +1627,8 @@ The offline mode feature was initially considered but ultimately not implemented
 
 Given these factors, the development team decided to focus resources on core features that provide more immediate value to users.
 
+#pagebreak()
+
 = Development Process
 == Methodology
 
@@ -1857,6 +1643,8 @@ Project management was streamlined using modern tools. GitHub Projects served as
 The project's version control strategy was built around Git and GitHub, providing a robust foundation for collaborative development. The branching strategy followed a modified Git Flow approach, with main and develop branches serving as the primary integration points. Feature branches were created for new development work, while release branches helped manage versioning and deployment cycles.
 
 The development workflow emphasized quality and collaboration. Every code change required a pull request review, ensuring that multiple team members reviewed and approved changes. Automated testing and code quality checks were integrated into the workflow, while documentation updates were treated as an integral part of the development process.
+
+#pagebreak()
 
 = Deployment
 == Mobile Application Deployment
@@ -1892,6 +1680,8 @@ The database was deployed on AWS RDS PostgreSQL, taking advantage of its modern 
 #figure(caption: "Database deployment using AWS RDS")[
   #image("images/cicd/aws.png", width: 100%)
 ]
+
+#pagebreak()
 
 = User Manual
 == Mobile App Usage
@@ -2085,6 +1875,8 @@ The photo management interface allows users to:
   #image("images/web-app-demo/image-detail.png", width: 45%)
 ]
 
+#pagebreak()
+
 The photo details view provides comprehensive information about a specific photo:
 
 + Basic Information: Photo name and description
@@ -2152,6 +1944,7 @@ The label management interface allows users to:
 #figure(caption: "Verify Image Copyright Interface")[
   #image("images/web-app-demo/verify-image-copyright.png", width: 100%)
 ]
+#pagebreak()
 
 The verify image copyright page provides two main functionalities for image verification and copyright protection:
 
@@ -2225,6 +2018,8 @@ The zero-knowledge copyright verification system enables users to create and ver
   - Generates zero-knowledge proof using Groth16
   - Optionally stores proof and commitment on blockchain
 
+#pagebreak()
+
 2. *Verification Modes*
   - Blockchain-based verification:
     - Verifier computes artwork hash
@@ -2297,6 +2092,8 @@ Click "Download Proof" to download the proof as a JSON file.
   #image("images/web-app-demo/zk-zk-own-2.png", width: 70%)
 ]
 
+#pagebreak()
+
 = Conclusion
 == Project Summary
 
@@ -2348,21 +2145,21 @@ The project has laid a solid foundation for future development and enhancement. 
 
 4. *Integration Opportunities*
   - Social media platform integration
-  - Third-party service support
-  - Cross-platform compatibility
+  - Third-party login service support
+  - Better cross-platform compatibility
   - API expansion
 
 5. *Security and Privacy*
   - Enhanced encryption methods
   - Advanced privacy controls
-  - Improved authentication
-  - Better data protection
 
 These future developments will further enhance the platform's capabilities and user experience, making it an even more powerful tool for digital content creation and sharing.
 #pagebreak()
 
 
 = Appendix
+
+
 == A Simple Example of Zero-Knowledge Proof
 
 === The Magic Cave Story@zero-knowledge-proofs <magic-cave>
@@ -2377,48 +2174,61 @@ These future developments will further enhance the platform's capabilities and u
   )
 ]
 
-Imagine you are Ali, who has discovered a magical cave with two paths:
+Once upon a time, you, as Ali, discovered a magical cave with two paths:
 
 - Path A (left)
 - Path B (right)
 
-These paths meet at a mysterious door that can only be opened with a secret magic word.
+At the heart of the cave, these paths converge at a mysterious door that can only be opened with a secret magic word.
 
 === The Challenge
 
-Your friend Xiao Ming doubts your knowledge of the secret word. To prove you know it without revealing the word itself, you play a game:
+Your friend Xiao Ming is skeptical about your knowledge of the secret word. To prove your knowledge without revealing the word itself, you devise a clever game:
 
-1. Xiao Ming waits outside while you enter through either path #footnote("Here Xiao Ming does not know which path you will choose! (If he knows, then you leak your knowledge of the secret word, it's not a zero-knowledge proof)")
-2. Xiao Ming randomly requests you to exit through Path A or B
-3. If you know the secret word, you can:
+1. *While Xiao Ming waits outside*, you enter the cave through either path
+2. Xiao Ming then randomly requests you to exit through Path A or B
+3. If you truly know the secret word, you can:
   - Unlock the door
-  - Exit through any requested path
+  - Exit through whichever path Xiao Ming requests
 4. If you don't know the word, you must:
   - Return through the same path you entered
-#notify([
-  To ensure this is a "zero-knowledge" proof, Xiao Ming must not know which path you initially entered through. Otherwise, you would have to reveal this information for him to believe you.
 
-  So we deliberately keep him from knowing which path you choose.])
+#notify([
+  The key to this being a "zero-knowledge" proof lies in Xiao Ming not knowing which path you initially entered through.
+
+  If you were to let Xiao Ming see you enter through Path A and exit through Path B, he would gain a *fact* about your knowledge of the secret word.
+
+  This would violate the *zero-knowledge* property, as Xiao Ming could then prove to others that you know the secret word by recording the process. (If he secretly recorded the process, he could then show it to others.)
+
+  The beauty of the zero-knowledge proof is that Xiao Ming becomes convinced of your knowledge, but cannot convince others.
+])
+
+#pagebreak()
 
 === The Proof Process
 
-By repeating this game multiple times (e.g., 10 times), Xiao Ming becomes convinced that you must know the secret word because:
+By repeating this game multiple times (say, 20 times), Xiao Ming becomes increasingly convinced of your knowledge because:
 
 - You consistently exit through the requested path
-- The probability of guessing correctly every time is extremely low
-- You never reveal the actual secret word
+- The probability of guessing correctly every time is astronomically low
+- The secret word itself remains a mystery to Xiao Ming
+
+Most importantly, Xiao Ming cannot prove your knowledge to others. Since he never sees which path you initially enter through, any recording of the process could be easily faked by two people working together.
 
 === Demonstrating ZKP Properties
 
-This simple story illustrates the three fundamental properties of zero-knowledge proofs:
+This enchanting story perfectly illustrates the three fundamental properties of zero-knowledge proofs:
 
 #table(
   columns: (auto, auto),
-  [Property], [Example],
   [Completeness], [If you know the word, you always succeed],
   [Soundness], [If you don't know the word, you'll likely fail eventually],
   [Zero-Knowledge], [Xiao Ming learns nothing about the word itself, just that you know it],
 )
+
+
+
+
 
 == Why using Incomplete Zero-Knowledge Proofs?
 From a theoretical perspective of zero-knowledge proofs,we can use *only the commitment* to verify the proof. In fact, we can design a more "zero-knowledge" solution:
@@ -2443,7 +2253,270 @@ However, the current implementation chooses to store pubKeyHash (i.e., owner's a
 
 Therefore, this represents a trade-off between theoretical purity and practicality. From a pure zero-knowledge proof perspective - we could indeed complete the verification using only the commitment, but it's not practical here.
 
+#pagebreak()
+== Semester 1 Project Proposal <sem1-proposal>
+=== Motivation and Background
 
-= References
+The motivation behind this project stems from three key observations about the current state of digital media and social interaction:
+
++ Digital Media Evolution
+  - Traditional photo sharing platforms lack spatial context and interactive experiences
+  - Users desire more immersive ways to experience digital content
+  - AR technology enables new forms of visual storytelling
+
++ Content Protection Needs
+  - Growing concerns about digital content ownership
+  - Increasing cases of unauthorized content usage
+  - Need for robust copyright protection mechanisms
+
++ Social Interaction Enhancement
+  - Limited ways to share experiences in digital spaces
+  - Desire for more meaningful social connections
+  - Potential of AR to create shared virtual spaces
+
+The project addresses these challenges by combining several innovative technologies:
+
++ Augmented Reality Integration
+  - Enables spatial photo viewing
+  - Creates immersive social experiences
+  - Bridges physical and digital worlds
+
++ Blockchain-based Protection
+  - Ensures content ownership
+  - Provides tamper-proof records
+  - Enables trustless verification
+
++ Advanced Security Features
+  - Invisible watermarking for content tracking
+  - Zero-knowledge proofs for privacy
+  - Perceptual hashing for content identification
+
+This combination of technologies creates a unique platform that:
+- Preserves the spatial context of photos
+- Protects creators' rights
+- Fosters meaningful social interactions
+- Maintains user privacy and security
+
+The project's background is rooted in the convergence of several technological trends:
+- The rise of AR/VR technologies
+- Growing adoption of blockchain solutions
+- Increasing focus on digital privacy
+- Evolution of social media platforms
+
+These factors create an ideal environment for developing a platform that reimagines how we share, protect, and experience digital content in an increasingly connected world.
+
+=== Objectives and Scope
+
+The project aims to create an innovative platform that combines AR technology, blockchain, and social features to revolutionize how we experience and share digital content. The objectives are organized around three main user groups:
+
+==== General Users
+
+*Immersive Experience*
+- Explore photos in AR/MR with spatial context
+- View content from original capture perspectives
+- Interact through spatial comments and replies
+
+#figure(caption: [Conceptual diagram of AR/MR experience@google-arcore-doc])[
+  #image("images/arcore/arcore_geospatial_overview.mp4_20241127_212923.146.png", width: 70%)
+  #image("images/arcore/arcore_geospatial_creator.mp4_20241127_212905.124.png", width: 70%)
+  #image("images/arcore/LaSagrada.png", width: 70%)
+]
+
+#pagebreak()
+
+*Privacy and Discovery*
+- On-device processing of private data
+- Flexible privacy controls for data protection
+
+==== Content Creators
+
+*Creative Tools*
+- Create interactive AR stories with photos and media
+- Showcase artwork in immersive environments
+- Build time-based narratives and sequences
+
+#figure(caption: [Conceptual diagram of content creator@google-arcore-doc])[
+  #image("images/arcore/arcore_geospatial_creator.mp4_20241127_212814.871.png", width: 70%)
+]
+
+*Content Protection*
+- Secure copyright management through blockchain
+- Decentralized ownership verification
+- Tamper-proof content records
+
+==== Technical Scope
+
+*Core Features*
+- AR/MR content viewing and interaction
+- Blockchain-based ownership management
+- Privacy-preserving technology
+- Real-time social features
+
+*Technical Limitations*
+- Device compatibility requirements
+- Privacy implementation complexity
+- External service dependencies
+- Limited offline functionality
+
+=== Feasibility Study
+
+The feasibility study for SnapSphere was conducted to evaluate the project's viability across three key dimensions: market potential, technical requirements, and operational sustainability.
+
+Market analysis revealed a growing demand for immersive AR experiences and interactive social media platforms, particularly among younger demographics. The project's unique combination of AR technology, blockchain-based content protection, and social features positions it well in the market. User research indicated strong interest in novel ways to experience and share content, with particular emphasis on privacy and content ownership.
+
+From a technical perspective, the project leverages well-established technologies including AR Foundation, blockchain, and zero-knowledge proofs. The core technologies have been proven in production environments, and the development team possesses the necessary expertise in these areas. Key technical challenges such as device sensor calibration, privacy-preserving architecture, and cross-platform compatibility were identified and addressed through careful planning and implementation.
+
+Operational viability was assessed through a comprehensive evaluation of user experience, technical infrastructure, and resource requirements. The study confirmed that the project can be implemented with existing resources while maintaining high standards of performance and reliability. The combination of cloud services, modern development tools, and robust security measures ensures a sustainable operational model.
+
+The study concluded that SnapSphere is technically feasible and commercially viable, with a clear path to implementation and a strong value proposition for users. The project's innovative approach to digital content sharing and protection addresses current market needs while leveraging proven technologies and best practices.
+
+=== Requirements Analysis
+
+==== Functional Requirements
+
+===== User Authentication
+- JWT-based authentication system
+- Role-based access control
+- Token revocation mechanism
+- Secure key management
+
+===== Content Creation
+- Cloud anchor management
+- Spatial positioning system
+- Scene-based organization
+
+===== Web Content Management
+- Scene and content administration
+- User management interface
+- Content moderation tools
+- Analytics dashboard
+
+===== Backend Review and Analytics
+- Content verification system
+- Usage statistics tracking
+- Performance monitoring
+- Security audit logging
+
+===== Non-Functional Requirements
+
+===== Response Time
+- Real-time AR content loading
+- Fast image similarity search
+- Efficient blockchain transactions
+- Low-latency social interactions
+
+===== Data Consistency
+- Blockchain-based ownership records
+- Synchronized AR content
+- Reliable data backup
+
+===== Privacy Protection
+- Zero-knowledge proof implementation
+- Invisible watermarking
+- Privacy-preserving content discovery
+- Secure data storage
+
+===== Security Requirements
+- Tamper-proof content protection
+- Secure key management
+- Access control enforcement
+- Vulnerability prevention
+
+===== Scalability Requirements
+- Distributed content delivery
+- Load balancing
+- Resource optimization
+- Performance monitoring
+
+===== Usability Requirements
+- Intuitive AR interactions
+- Clear content organization
+- Responsive web interface
+- Cross-platform compatibility
+
+=== Risk Management
+==== Technical Challenges
+
+===== AR Framework Selection
+*Initial Challenges*
+- Limited open-source AR solutions
+- The8thwall's closed-source nature
+- AR.js implementation difficulties
+- Cross-platform compatibility issues
+
+*Solution*
+- Selected Unity + AR Foundation after evaluating WebXR and The8thwall
+- Leveraged Unity's robust AR development tools
+- Utilized AR Foundation's cross-platform capabilities
+- AR Foundation is a cross-platform framework by nature
+
+#figure(caption: [Maker based positioning in AR.js])[
+  #image("images/legacy/image_positioning.png", width: 50%)
+]
+
+Marker Tracking displays content when a marker is detected by the camera. While stable, markers are limited in shape, color and size. Common applications include augmented books, flyers and advertising.@ar-js
+
+Marker Tracking is attempted to be used in the project, but it's requiring a pre-defined marker image, which is not suitable for the project.
+
+Location Based AR uses real-world coordinates to display AR content on user devices. Users can move around outdoors and see AR content anchored to real locations, with content scaling based on distance. Applications include tourist guides, city exploration, point-of-interest discovery, and educational experiences like treasure hunts and situated art. @ar-js
+
+Location Based AR is not applicable to the project, due to the low accuracy of the location.
+
+Eventually, it's possible to use Cloud Anchor positioning in this project, explained in @cloud-anchor.
+
+===== Algorithm Implementation
+*Complex Requirements*
+- Zero-knowledge proof integration
+- External software dependencies
+  - The watermarking module depends on a python executable.
+- Mathematical complexity
+  - In the mobile app development, complex 3D environment interactions require extensive knowledge of linear algebra and computer graphics
+- Performance optimization
+  - The watermarking module is a performance bottleneck
+*Solution*
+- Modular design approach
+- Python-based watermarking
+- Optimized proof generation
+- Efficient verification process
+
+===== Development and Debugging
+*Development Challenges*
+- Long Unity compilation times (\~3 minutes)
+  - Unity build is full package compilation by default
+- Limited debugging capabilities
+  - Hard to debug across devices
+- Mobile deployment complexity
+- Performance monitoring
+- Requirement of Secure contexts
+  - Some AR features in Browser are not available in non-secure contexts (non-HTTPS)
+
+*Solution*
+- Optimized build process (Incremental Build)
+- Enhanced logging system (Logcat@logcat)
+- Performance profiling#footnote([It turns out that the performance is good enough, so I didn't do anything about it.])
+- Use HTTPS proxy, e.g. `ngrok`@ngrok
+
+==== Risk Mitigation Strategies
+
+===== Technical Risk Management
+- Regular technology evaluation
+- Backup solution planning
+- Performance optimization
+- Cross-platform testing
+
+===== Development Process
+- Modular architecture
+- Continuous integration
+- Automated testing
+- Performance monitoring
+
+===== Quality Assurance
+- Comprehensive testing
+- User feedback collection
+- Performance benchmarking
+- Security auditing
+
+
+#pagebreak()
 
 #bibliography("bib.yml")
