@@ -150,3 +150,36 @@ graph LR
   ZkModule-->AccessControlModule
 ```
 
+```mermaid
+graph TB
+  AppModule-->UserModule
+  AppModule-->AuthModule
+  AuthModule-->UserModule
+  AuthModule-->PassportModule
+  AuthModule-->JwtModule
+  AppModule-->RoleModule
+  AppModule-->FasterCrudModule
+  AppModule-->TestModule
+  AppModule-->FileModule
+  AppModule-->ConsensusModule
+  ConsensusModule-->MessageMetaModule
+  ConsensusModule-->GeoImageModule
+  GeoImageModule-->FileModule
+  GeoImageModule-->CloudAnchorModule
+  ConsensusModule-->FileModule
+  AppModule-->GeoObjectModule
+  AppModule-->GeoImageModule
+  AppModule-->GeoCommentModule
+  GeoCommentModule-->CloudAnchorModule
+  AppModule-->StoryboardModule
+  AppModule-->SceneModule
+  SceneModule-->LabelModule
+  AppModule-->WatermarkModule
+  WatermarkModule-->FileModule
+  AppModule-->CloudAnchorModule
+  AppModule-->LabelModule
+  AppModule-->StatisticsModule
+  AppModule-->ZkModule
+  ZkModule-->ConsensusModule
+```
+

@@ -18,6 +18,18 @@
 
 #title-slide()
 
+= Before Everything
+== Overview
+This slides will mainly focus on:
+- Core Technologies
+- System Design
+
+This slides will not cover:
+- Implementation details (too much, see report)
+- User manual
+
+
+
 = Introduction
 
 == What is SnapSphere?
@@ -25,48 +37,65 @@
 SnapSphere is a application that allows users to capture and view photos in an immersive environment, with a strong emphasis on user privacy and copyright protection.
 // The app ensures that all captured content remains under the user's control, with clear ownership rights and privacy settings.
 
-An AR gallery + A collection of copyright/privacy protection methods#footnote("I'm going to quickly cover the UI part (AR gallery) and explain what's happening behind the scene (technical part)").
+An AR gallery + A collection of copyright / privacy protection methods
+#footnote("I'm going to quickly cover the UI part (AR gallery) and explain what's happening behind the scene (technical part)")
+.
 
 In short words:
 
 - Put medias at anywhere in the real world
-- with a sharable, interactive, persistent experience
+- with a *sharable, interactive, persistent* experience
 
-== Demo
+== Why?
+=== User Experience
 
-#matrix-slide[
-  #align(left)[
-    To create/load a scene, an anchor must be created or resolved.#footnote("details will be discussed later")
+Traditional photo experiences are *not awsome enough*.
 
-    This provides a semi-persistent reference point connecting the media to the real world.
+- No interaction
+- No direct link to the real world
 
-    Accuracy is centimeter-level.
-  ]
-][
-  #figure(caption: "Create an anchor")[
-    #image("images/anchor.png", width: 70%)
-  ]
+=== AR Limitations
+
+Traditional AR using GPS#footnote("accuracy: ~4.9m") to locate AR space, which is not accurate enough for indoor use.
+
+#pagebreak()
+#[
+  // #set text(fill: rgb("ffcbc45e"))
+
+  #set page(
+    background: rotate(
+      24deg,
+      repeat()[
+        #repeat()[#text(18pt, fill: rgb("ffcbc45e"))[
+            #stack(
+              for idx in range(1, 7) {
+                [
+                  #v(1em)
+
+                  #text(18pt, fill: rgb("#ffcbc45e"))[
+                    I am
+                  ]
+                  #v(1em)
+                  #text(18pt, fill: rgb("ffcbc45e"))[
+                    watermark
+                  ]
+                ]
+              }
+            )
+          ]
+        ]
+      ],
+    ),
+  )
+
+  === Digital Media Misappropriation
+
+  Digital medias are easily misappropriated, and it's hard to prove ownership.
+
+  Visiable watermark is easy to remove, and interfere with the user experience.
 ]
 
-#matrix-slide[
-  #align(left)[
-    Capture media / load existing media
-  ]
-][
-  #figure(caption: [Portrait a waste bin])[
-    #image("images/portrait.png", width: 70%)
-  ]
-]
 
-#matrix-slide[
-  #align(left)[
-    Someone else leave their comment in the same scene
-  ]
-][
-  #figure(caption: [Scene is shared])[
-    #image("images/waste-bin-2.png", width: 70%)
-  ]
-]
 
 == Concerns
 === Claim Copyright (Block Chain)
@@ -89,33 +118,15 @@ In short words:
   - No need to upload media/personal info to the cloud when create copyright claim
   - Copyright verification can be done offline, without uploading media / revealing personal info
 
-== Solutions
-
-=== Blockchain Based Copyright Protection
-- Artwork identifier is saved to blockchain
-- Can be looked up by image's *perceptual hash* or *embedded identidfier*.
-
-#figure(caption: [Blockchain-based copyright protection])[
-  #image("images/impl/block-chain-verify.png", width: 50%)
-]
-
-
-=== Zero-knowledge proof
-
-- Prove ownership without revealing content or identity
-- Cannot be forged by others
-- Can be verified offline by anyone
-- No possibility to restore the content from the proof
-
-#figure(caption: [Zero-knowledge proof])[
-  #image("images/impl/zk.png", width: 50%)
-]
-
 
 = Core Technologies
 == Cloud Anchor
 
 Cloud Anchor is a reference point connecting real world and AR space.
+
+#figure(caption: [Create an anchor using environment features])[
+  #image("../images/impl/cloud-anchor-part-1.png", width: 70%)
+]
 
 #pagebreak()
 === Create / Resolve Anchor
@@ -146,6 +157,44 @@ An anchor needs local environmental features to be created / resolved.
   ]
 ]
 
+
+// === Demo
+
+#matrix-slide[
+  #align(left)[
+    To create/load a scene, an anchor must be created or resolved.
+
+    This provides a semi-persistent reference point connecting the media to the real world.
+
+    Accuracy is centimeter-level.
+  ]
+][
+  #figure(caption: "Create an anchor")[
+    #image("images/anchor.png", width: 70%)
+  ]
+]
+
+#matrix-slide[
+  #align(left)[
+    Capture media / load existing media.
+  ]
+][
+  #figure(caption: [Portrait a waste bin])[
+    #image("images/portrait.png", width: 70%)
+  ]
+]
+
+#matrix-slide[
+  #align(left)[
+    Someone else leave their comment in the same scene.
+  ]
+][
+  #figure(caption: [Scene is shared])[
+    #image("images/waste-bin-2.png", width: 70%)
+  ]
+]
+
+
 #pagebreak()
 
 == Scene Hierarchy
@@ -160,7 +209,7 @@ Each node can contain a media or be a container for other nodes.
 
 == Invisible Watermarking
 
-Use invisible watermarking to embed copyright/tracking information into the media.
+Use invisible watermarking to embed copyright/tracking information into the media. Extraction does not require the original media.
 
 #figure(caption: [invisible watermarking])[
   #grid(
@@ -217,9 +266,18 @@ Perceptual hashing is a technique to hash an image into a fixed-length vector. S
 
 #pagebreak()
 
-Hamming distance is used to measure the similarity between two hash values.
+Hamming distance is used to measure the similarity between two p-hash values.
 
-//TODO
+$
+  text("Hamming distance") = sum(
+    bold(x)_i xor bold(y)_i
+  )
+$
+
+
+IVFFlat is used to accelerate the search k-nearest neighbors.
+
+In this way, we can find the most similar images in database to a given image.
 
 == Blockchain-based Copyright Protection
 
@@ -232,38 +290,77 @@ Key benefits:
 - Decentralized verification
 - Privacy protection
 
-#figure(caption: [Blockchain-based copyright protection process])[
-  // #image("images/diagrams/blockchain-copyright-v1.svg", width: 70%)
+#pagebreak()
+
+#figure(caption: [Image ownership query])[
+  #image("images/impl/block-chain-verify.png", width: 50%)
 ]
 
 == Zero-knowledge proof
 
-
 Zero-knowledge proofs (ZKPs) allow proving a statement without revealing any additional information.
 
-In our system:
 - Prove ownership without revealing content
 - Verify without exposing identity
 - Maintain privacy while ensuring authenticity
 
+#pagebreak()
+
 #figure(caption: [Zero-knowledge proof process])[
-  // #image("images/diagrams/zkp.svg", width: 70%)
+  #image("images/impl/zk.png", width: 60%)
 ]
 
-= System Design
-//TODO
+- Prover create `Keccak256` hash of the artwork and a identifier, submit to server
+- A ZKP#footnote("Explainations see report.") is created and uploaded to blockchain
+- Verifier can verify the proof locally
 
+= System Design
+== Mobile App
+
+Developed with Unity 6.0, C\#, AR Foundation.
+
+#figure(caption: [Unity Development Environment])[
+  #image("images/unity.png", width: 60%)
+]
+
+== Backend
+
+Nest.js(on top of Express.js) as framework.
+
+Integrate with Hedera Hashgraph (blockchain), PostgreSQL (database), Redis (cache), S3 (storage).
+
+#figure(caption: [Backend Modules])[
+  #image("images/modules-simp.png", width: 100%)
+]
+
+== Frontend
+
+Frontend stack:
+- Nuxt.js as the framework
+- Vue 3 with Composition API
+- TypeScript for type safety
+- Tailwind CSS for styling
+- Pinia for state management
+- Vue Router for navigation
+- Axios for HTTP requests
+
+Development tools:
+- OpenAPI Codegen for API client generation
+- Prettier for code formatting
+- Vite for build tooling
+
+== DevOps
+
+CI/CD pipeline with Github Actions.
+
+Vercel for frontend deployment.
+
+Heroku for backend deployment.
+
+Cloudflare for CDN.
 
 == Conclusion
 
-Key achievements:
-- Immersive AR experience
-- Robust copyright protection
-- Privacy-preserving verification
-- Efficient content discovery
+- Shareable, interactive, persistent AR experience
+- Decentralized, tamper-proof, privacy-preserving copyright protection
 
-Future work:
-- Enhanced AR interactions
-- Advanced privacy features
-- Performance optimization
-- Cross-platform improvements
